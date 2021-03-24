@@ -8,8 +8,8 @@ PROJECT(OBVISION)
 SET(OBVISION_VERSION_MAJOR 0)
 SET(OBVISION_VERSION_MINOR 1)
 
-INCLUDE_DIRECTORIES(..
-					/usr/include/eigen3)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LZ4 REQUIRED liblz4)
 
 add_library(obvision STATIC
 	registration/icp/assign/PairAssignment.cpp
@@ -64,6 +64,15 @@ add_library(obvision STATIC
 	planning/AStarNode.cpp
 	ransac/RansacPrimitives.cpp
 	)
+
+TARGET_INCLUDE_DIRECTORIES(obvision PRIVATE
+	..
+	/usr/include/eigen3
+)
+
+target_link_libraries(obvision
+	${LZ4_LINK_LIBRARIES}
+)
 
 ####################
 ##### Packaging ####
