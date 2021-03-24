@@ -52,7 +52,7 @@ SET(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${AR
 
 SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libgsl0-dev (>=1.15), libudev-dev(>=1.0), libxml++2.6-dev(>= 2.6.2), gcc (>= 4.6), build-essential (>= 1.14.18), cmake (>= 2.6), libv4l-dev (>=0.8)")
 
-SET(CPACK_RESOURCE_FILE_LICENSE "../../License.txt")
+SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/../../License.txt")
 IF(CPACK_GENERATOR STREQUAL "DEB")
 CONFIGURE_FILE("fixup_deb.sh.in" "${CMAKE_CURRENT_BINARY_DIR}/fixup_deb.sh" @ONLY IMMEDIATE)
 ENDIF()
