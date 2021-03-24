@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
 
 SET(CMAKE_BUILD_TYPE Release)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS} -fopenmp -Wall -O2 -DNDEBUG -pipe -march=native") 
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS} -fopenmp -Wall -O2 -DNDEBUG -pipe -march=native")
 
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../../cmake)
 
@@ -38,10 +38,10 @@ SET(CPACK_GENERATOR "DEB")
 SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Stefan May <stefan.may@th-nuernberg.de>") #required
 set(CPACK_SET_DESTDIR true)
 SET(CPACK_INSTALL_PREFIX "")
-EXECUTE_PROCESS ( COMMAND dpkg --print-architecture 
+EXECUTE_PROCESS ( COMMAND dpkg --print-architecture
     OUTPUT_VARIABLE arch.output OUTPUT_STRIP_TRAILING_WHITESPACE)
 IF(BUILD_ARM)
-  SET(ARCH_TEXT_PACKAGE armhf) 
+  SET(ARCH_TEXT_PACKAGE armhf)
   SET(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "armhf")
 ELSE()
   SET(ARCH_TEXT_PACKAGE ${arch.output})
